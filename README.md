@@ -40,4 +40,19 @@ Week 5 Monday homework
     first_name|street|city|state
     Corrine|6439 Zetta Hills|Willmouth|WY
     Corrine|54369 Wolff Forges|Lake Bryon|CA
+    
+  Correct Virginie Mitchell's address to "New York, NY, 10108".    
+    id|first_name|last_name|email
+    39|Virginie|Mitchell|daisy.crist@altenwerthmonahan.biz
+    sqlite> update addresses
+       ...> set city = 'New York', state = 'NY', zip = '10108'
+       ...> where user_id = '39';
+    sqlite> select * from addresses where user_id = '39';
+    id|user_id|street|city|state|zip
+    41|39|12263 Jake Crossing|New York|NY|10108
+    42|39|83221 Mafalda Canyon|New York|NY|10108
+    
+  How much would it cost to buy one of each tool?
+    sqlite> select sum(price) from items where category like '%Tools%';
+46477
 
