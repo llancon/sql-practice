@@ -56,3 +56,8 @@ Week 5 Monday homework
     sqlite> select sum(price) from items where category like '%Tools%';
 46477
 
+  How many total items did we sell?
+       sqlite> select sum(quantity) from orders;
+      sum(quantity)
+      -------------
+      2125 
