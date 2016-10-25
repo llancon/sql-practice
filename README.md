@@ -1,11 +1,11 @@
 # sql-practice
 Week 5 Monday homework
   
-  How many users are there? 
+1.) How many users are there? 
     sqlite> select count (*) from users;
     50
   
-  What are the 5 most expensive items?
+2.) What are the 5 most expensive items?
     sqlite> select *
     ...> from items
     ...> order by price desc 
@@ -16,7 +16,7 @@ Week 5 Monday homework
     40|Sleek Wooden Hat|Music & Baby|Quality-focused heuristic info-mediaries|9390
     itm60|Ergonomic Steel Car|Books & Outdoors|Enterprise-wide secondary firmware|9341
   
-  What's the cheapest book? (Does that change for "category is exactly 'book'" versus "category contains 'book'"?)
+3.) What's the cheapest book? (Does that change for "category is exactly 'book'" versus "category contains 'book'"?)
       sqlite> select *
        ...> from items
        ...> where category = Books
@@ -32,7 +32,7 @@ Week 5 Monday homework
     id|title|category|description|price
     76|Ergonomic Granite Chair|Books|De-engineered bi-directional portal|1496
    
-  Who lives at "6439 Zetta Hills, Willmouth, WY"? Do they have another address?
+4.) Who lives at "6439 Zetta Hills, Willmouth, WY"? Do they have another address?
     sqlite> select users.* from users inner join addresses on addresses.user_id = users.id where addresses.street = '6439 Zetta Hills' and addresses.city = 'Willmouth' and addresses.state = 'WY';
   id|first_name|last_name|email
   40|Corrine|Little|rubie_kovacek@grimes.net
@@ -41,7 +41,7 @@ Week 5 Monday homework
     Corrine|6439 Zetta Hills|Willmouth|WY
     Corrine|54369 Wolff Forges|Lake Bryon|CA
     
-  Correct Virginie Mitchell's address to "New York, NY, 10108".    
+5.) Correct Virginie Mitchell's address to "New York, NY, 10108".    
     id|first_name|last_name|email
     39|Virginie|Mitchell|daisy.crist@altenwerthmonahan.biz
     sqlite> update addresses
@@ -52,16 +52,16 @@ Week 5 Monday homework
     41|39|12263 Jake Crossing|New York|NY|10108
     42|39|83221 Mafalda Canyon|New York|NY|10108
     
-  How much would it cost to buy one of each tool?
+6.) How much would it cost to buy one of each tool?
     sqlite> select sum(price) from items where category like '%Tools%';
 46477
 
-  How many total items did we sell?
+7.) How many total items did we sell?
        sqlite> select sum(quantity) from orders;
       sum(quantity)
       -------------
       2125 
-How much was spent on books?
+8.) How much was spent on books?
                 sqlite> select price * quantity as value from items, orders where category = 'Books' and orders.item_id = items.id;
         value     
         ----------
@@ -82,3 +82,8 @@ How much was spent on books?
         ----------
         420566  
         
+9.) Simulate buying an item by inserting a User for yourself and an Order for that User.     
+insert into users values
+         ...> ('51','Luis','Lancon','abcdefg@tiy.com');
+         sqlite> insert into orders values ('378','51','100','20',' 2016-10-09 00:40:31.307668');
+         
