@@ -61,3 +61,24 @@ Week 5 Monday homework
       sum(quantity)
       -------------
       2125 
+How much was spent on books?
+                sqlite> select price * quantity as value from items, orders where category = 'Books' and orders.item_id = items.id;
+        value     
+        ----------
+        11968     
+        21392     
+        27504     
+        71232     
+        10472     
+        53424     
+        80136     
+        71232     
+        46230     
+        17808     
+        3056      
+        6112      
+        sqlite> select sum(price * quantity) as value from items, orders where category = 'Books' and orders.item_id = items.id; 
+        value     
+        ----------
+        420566  
+        
